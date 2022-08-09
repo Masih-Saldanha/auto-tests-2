@@ -1,0 +1,15 @@
+name: Validation Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  Validation-Tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Run the tests
+        run: docker-compose -f docker-compose-tests.yml run node_app_students npm run test
